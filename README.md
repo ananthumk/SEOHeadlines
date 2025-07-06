@@ -47,5 +47,8 @@ A full-stack web application for generating AI-powered SEO headlines and simulat
 - Enter your business name and location in the frontend UI.
 - Click "Generate SEO Headlines" to get AI-powered suggestions and simulated analytics.
 - Use the dark mode toggle for a different theme.
+- Responsive design for all screen sizes
+- Copy and regenerate headline functionality
+- Animated loading states
 
 
