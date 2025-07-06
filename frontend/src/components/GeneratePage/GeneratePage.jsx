@@ -56,7 +56,7 @@ const GeneratePage = () => {
         }))
     }
     return (
-        <div className='dark:bg-slate-800 h-auto relative w-full py-10 flex flex-col md:items-center lg:flex-row justify-evenly bg-gray-50 '>
+        <div className='dark:bg-slate-800 overflow-y-auto h-auto relative w-full py-10 flex flex-col md:items-center lg:flex-row justify-evenly bg-gray-50 '>
             <div className='w-full h-[auto] space-y-5 md:w-[90%] lg:w-[400px] xl:w-[600px] md:h-[70vh] lg:h-[130vh] xl:h-[100vh]  flex flex-col justify-between'>
                 <div className='dark:text-white space-y-3 w-[350px] text-center self-center md:text-left md:w-full font-roboto'>
                     <h1 className='text-[30px] text-black dark:text-white font-bold md:font-extrabold'>Generate Your Perfect SEO Headline</h1>
