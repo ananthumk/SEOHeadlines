@@ -10,8 +10,10 @@ function App() {
   return (
       <div>
       <Navbar />
-      <GeneratePage />
-      <Footer />
+      <div className='pt-[65px] md:pt-20'>
+        <GeneratePage />
+        <Footer />
+      </div>
       </div>
   )
 }

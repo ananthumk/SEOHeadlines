@@ -19,7 +19,7 @@ const GeneratePage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const response = await axios.post('http://localhost:3000/business-data', businessInfo)
+        const response = await axios.post('https://seoheadlines.onrender.com/business-data', businessInfo)
         console.log(response)
         if (response.status === 200){
             setHeadlines(response.data)
@@ -33,7 +33,7 @@ const GeneratePage = () => {
     const regenerateHeadline = async() => {
         setRegenerate(true)
         try {
-            const response = await axios.get(`http://localhost:3000/regenerate-headline?name=${businessInfo.name}&location=${businessInfo.location}`)
+            const response = await axios.get(`https://seoheadlines.onrender.com/regenerate-headline?name=${businessInfo.name}&location=${businessInfo.location}`)
             if (response.status === 200) {
                 setHeadlines(prevHeadlines => ({
                     ...prevHeadlines,
@@ -56,41 +56,41 @@ const GeneratePage = () => {
         }))
     }
     return (
-        <div className='h-100 w-full py-10 flex flex-col md:flex-row justify-evenly relative bg-gray-50 '>
-            <div className='w-full md:w-[600px] h-[100vh] flex flex-col justify-between'>
-                <div className='space-y-3 w-[350px] text-center self-center md:text-left md:w-full font-roboto'>
-                    <h1 className='text-[30px] text-black font-bold md:font-extrabold'>Generate Your Perfect SEO Headline</h1>
+        <div className='dark:bg-slate-800 h-auto relative w-full py-10 flex flex-col md:items-center lg:flex-row justify-evenly bg-gray-50 '>
+            <div className='w-full h-[auto] space-y-5 md:w-[90%] lg:w-[400px] xl:w-[600px] md:h-[70vh] lg:h-[130vh] xl:h-[100vh]  flex flex-col justify-between'>
+                <div className='dark:text-white space-y-3 w-[350px] text-center self-center md:text-left md:w-full font-roboto'>
+                    <h1 className='text-[30px] text-black dark:text-white font-bold md:font-extrabold'>Generate Your Perfect SEO Headline</h1>
                     <p className='text-lg font-normal'>Enter your business details and get AI-powered SEO headlines that drive traffic and improve your search rankings</p>
                 </div>
-                <div className='w-[350px] self-center md:w-full p-8 my-4 h-[370px] rounded-lg bg-white flex flex-col justify-around shadow-2xl'>
+                <div className='dark:bg-slate-200 w-[350px] self-center md:w-full p-8 my-4 h-[370px] rounded-lg bg-white flex flex-col justify-around shadow-2xl'>
                     <div className='flex items-center gap-2'>
-                        <IoBusiness size={30} />
-                        <h1 className='text-lg font-medium'>Business Information</h1>
+                        <IoBusiness className='text-blue-600' size={30} />
+                        <h1 className='text-lg text-black font-medium'>Business Information</h1>
                     </div>
                     
-                    <form className='flex flex-col py-6 space-y-4' onSubmit={handleSubmit}>
-                        <label className='text-gray-400 text-base font-medium' htmlFor="b/s-details">Business Name</label>
+                    <form className='flex flex-col py-6 space-y-4 w-full' onSubmit={handleSubmit}>
+                        <label className='text-gray-400 dark:text-gray-950 text-base font-medium' htmlFor="b/s-details">Business Name</label>
                         <div className='flex border border-black rounded-md items-center px-2'>
-                            <BiSolidBusiness className='text-gray-300' size={24}  />
+                            <BiSolidBusiness className='text-gray-500' size={24}  />
                             <input 
                                 id="b/s-details" 
                                 type="text" name="name" 
                                 onChange={handleChange} 
                                 placeholder='eg: Digital Marketing Agency' 
-                                className='px-2 py-3 text-md outline-none relative'
+                                className='px-2 py-3  text-black text-md outline-none relative w-full bg-transparent'
                                 required
                             />                          
                         </div>
-                        <label className='text-gray-400 text-base font-medium' htmlFor="location">Location</label>
+                        <label className='text-gray-400 dark:text-gray-950  text-base font-medium' htmlFor="location">Location</label>
                         <div className='flex border border-black rounded-md items-center px-2'>
-                            <IoLocationOutline className='text-gray-300' size={24} />
+                            <IoLocationOutline className='text-gray-500 ' size={24} />
                             <input 
                                 type="text" 
                                 id="location" 
                                 name="location" 
                                 onChange={handleChange} 
                                 placeholder='eg: New York,NY' 
-                                className='px-2 py-3 text-md outline-none relative'
+                                className='px-2 py-3  text-black text-md outline-none relative w-full bg-transparent'
                                 required
                             />
                          </div>
@@ -124,13 +124,13 @@ const GeneratePage = () => {
                 </div>
             </div>
             {Object.keys(headlines).length === 0 ? 
-            <div className= 'w-[350px] self-center md:self-start text-center md:w-[500px] h-[350px] flex flex-col justify-center items-center px-7 bg-white rounded-lg shadow-lg space-y-5'>
+            <div className= 'w-[350px] dark:bg-slate-200  mt-10 md:mt-16 lg:mt-0 self-center lg:w-[300px] md:w-[90%] lg:self-start text-center xl:w-[400px] h-[350px] flex flex-col justify-center items-center px-7 bg-white rounded-lg shadow-lg space-y-5'>
                 <img className='w-20 h-20 mx-auto rounded-full'
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjA2ECgSbhUMkr2iWy2RE__Fj_gMM_F_tzBQCk2oNFk8BiPU4S" alt="star" />
                 <h2 className='text-lg font-medium'>Ready to Generate Headlines</h2>
                 <p className='text-md font-normal'>Enter your business information to get started with AI-powered SEO headlines and analytics.</p>
             </div>:
-            <div className='w-[350px] self-center md:self-start md:w-[600px] h-[570px] p-8 flex flex-col justify-evenly rounded-lg bg-white shadow-lg'>
+            <div className='w-[350px] dark:bg-slate-200 mt-10  md:mt-16 lg:mt-0 self-center lg:w-[400px] md:w-[90%] lg:self-start xl:w-[600px] h-[570px] p-8 flex flex-col justify-evenly rounded-lg bg-white shadow-lg'>
                <div className='flex justify-between items-center'>
                 <h2 className='text-xl font-semibold'>Generated Results</h2>
                 <button className='border-none text-sm bg-green-400 text-green-800 px-1 py-[1px] rounded-lg'>Live</button>
@@ -149,25 +149,25 @@ const GeneratePage = () => {
                     </div>
                     <RiShareBoxLine size={20} className='text-gray-400' />
                 </div>
-                <div className='w-full h-[200px] md:h-[130px] space-y-5 p-3 md:p-4 rounded-lg bg-gray-100'>
+                <div className='w-full h-[200px] md:h-[130px] space-y-5 p-3 md:p-4 dark:bg-gray-400 rounded-lg bg-gray-100'>
                     <div className='flex justify-between items-center'>
                     <h2 className='text-md font-medium'>AI-Generated SEO Headline</h2>
                     <div className='flex space-x-3 items-center'>
                         <IoCopyOutline size={16} />
                         {!regenerate ?
                          <RiResetLeftLine onClick={regenerateHeadline}  size={16}/>:
-                         <RiResetLeftLine className='animate-spin' size={16}/>
+                         <RiResetLeftLine className='animate-spin opacity-50' size={16}/>
                         }
                     </div>
                     </div>
-                    <div className='w-full h-[70px] md:h-[45px] rounded-lg bg-white border-none flex items-center px-2'>
+                    <div className='w-full h-[70px] md:h-[45px] rounded-lg dark:bg-slate-300 bg-white border-none flex items-center px-2'>
                         <p className='text-md font-normal text-black'>{headlines.headline}</p>
                     </div>
                 </div>
                 <div className='w-full grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 font-medium'>
                     {regenerate ? 
                     <button 
-                     className='flex justify-center items-center py-3 gap-3 border rounded-md border-cyan-500/50 bg-white text-black '>
+                     className='flex justify-center items-center opacity-50 py-3 gap-3 border rounded-md border-cyan-500/50 bg-white text-black '>
                         <RiResetLeftLine className='animate-spin' size={20} />
                         Regenerating...
                     </button>
