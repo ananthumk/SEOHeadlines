@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full h-[65px] dark:bg-black fixed top-0 left-0 md:h-20 flex flex-row items-center  justify-between px-4 md:px-11 bg-white md:bg-zinc-200 bg-opacity-60 z-50">
+    <div className="w-full max-h-[100px] h-[65px] dark:bg-black fixed top-0 left-0 md:h-20 flex flex-row items-center  justify-between px-4 md:px-11 bg-white md:bg-zinc-200 bg-opacity-60 z-50">
       <div className="flex items-center gap-2 md:gap-4">
         <img
           className="w-10 h-10 md:w-12 md:h-12 rounded-lg"
