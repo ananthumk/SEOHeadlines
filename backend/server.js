@@ -26,19 +26,23 @@ const headlineTemplate = [
     "How {name} is Redefining Standards in {location}"
 ]
 
+// To select random headline from 'headlineTemplate'
 const generateHeadline = (name, location) => {
     const randomIndex = Math.floor(Math.random() * headlineTemplate.length);
     return headlineTemplate[randomIndex].replace("{name}", name).replace("{location}", location);
 }
 
+//Generate random rating
 const generateRating = () => {
     return (3.5 + Math.random() * 1.5).toFixed(1);
 }
 
+//Generate random Review
 const generateReviews = () => {
     return Math.floor(50 + Math.random() * 200)
 }
 
+// POST - To generate Headline, Rating, and Reviews
 app.post('/business-data', (req, res) =>{
     try {
         const { name, location } = req.body;
@@ -57,6 +61,7 @@ app.post('/business-data', (req, res) =>{
     }
 })
 
+// GET - To regenerate Headline
 app.get('/regenerate-headline', (req, res) => {
     try {
         const {name , location } = req.query;
