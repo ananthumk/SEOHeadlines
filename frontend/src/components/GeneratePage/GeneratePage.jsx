@@ -16,6 +16,23 @@ const GeneratePage = () => {
     const [generate, setGenerate] = useState(false)
     const [headlines, setHeadlines] = useState({})
 
+    const [toast, setToast] = useState(null);
+    
+    const copyHeadline = () => {
+        if (headlines.headline) {
+            navigator.clipboard.writeText(headlines.headline);
+            setToast('Headline copied to clipboard!');
+            setTimeout(() => setToast(null), 2000);
+        }
+    }
+
+    const Toast = ({ message, onClose }) => (
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow-lg z-50 animate-fade-in">
+        {message}
+        <button className="ml-3 text-white font-bold" onClick={onClose}>×</button>
+    </div>
+    );
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -153,7 +170,7 @@ const GeneratePage = () => {
                     <div className='flex justify-between items-center'>
                     <h2 className='text-md font-medium'>AI-Generated SEO Headline</h2>
                     <div className='flex space-x-3 items-center'>
-                        <IoCopyOutline size={16} />
+                        <IoCopyOutline size={16} onClick={copyHeadline} className="cursor-pointer" />
                         {!regenerate ?
                          <RiResetLeftLine onClick={regenerateHeadline}  size={16}/>:
                          <RiResetLeftLine className='animate-spin opacity-50' size={16}/>
@@ -178,7 +195,9 @@ const GeneratePage = () => {
                         New Headline
                     </button>
 }
-                    <button className='flex justify-center items-center py-3 rounded-md gap-3 bg-gradient-to-r from-green-500 to-green-800 text-white '>
+                    <button className='flex justify-center items-center py-3 rounded-md gap-3 bg-gradient-to-r from-green-500 to-green-800 text-white '
+                        onClick={copyHeadline}
+                    >
                         <IoCopyOutline size={20} />
                         Copy Headline
                     </button>
@@ -195,6 +214,7 @@ const GeneratePage = () => {
                 </div>
             </div>
             }
+            {toast && <Toast message={toast} onClose={() => setToast(null)} />}
         </div>
     )
 }
